@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shadman Shahriar Dhruba</title>
+    <link rel="icon" href="dhruba.png" type="image/x-icon">
+    <style>
+       
+        body {
+            background-color: #E6F7FF;
+            padding-top: 100px;
+            position: relative;
+            margin-bottom: 60px;
+        }
+        h1 {
+            margin-top: 0;
+        }
+        button {
+            border-radius: 90px;
+            padding: 10px;
+            background-color: #ffffff;
+            border: none;
+            cursor: pointer;
+        }
+        button img {
+            width: 24px;
+            height: 24px;
+            vertical-align: middle;
+            margin-right: 5px;
+        }
+        .time-bar {
+            position: fixed;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: auto;
+            height: auto;
+            background-color: #293336;
+            text-align: center;
+            line-height: 25px;
+            color:white;
+            font-size: 24px;
+            border-radius: 25px;
+            padding: 0 20px;
+        }
+        .search-container {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 300px;
+            background-color: #fff;
+            border-radius: 25px;
+            padding: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .search-container input[type=text] {
+            width: 50%;
+            padding: 10px;
+            border: none;
+            border-radius: 20px;
+            outline: none;
+            font-size: 16px;
+        }
+        .search-container button {
+            background-color: #293336;
+            color: white;
+            border: none;
+            padding: 5px 30px;
+            cursor: pointer;
+            border-radius: 20px;
+        }
+        .menu-button {
+            position: fixed;
+            top: 20px;
+            right: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+        .menu-icon {
+            width: 24px;
+            height: 24px;
+        }
+        .popup-menu {
+            display: none;
+            position: fixed;
+            top: 60px;
+            right: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            padding: 20px;
+            z-index: 1000;
+        }
+        .popup-menu ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .popup-menu li {
+            margin: 10px 0;
+        }
+        .popup-menu a {
+            text-decoration: none;
+            color: #293336;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner"></div>
+    </div>
+
+    <!-- Main content -->
+    <center><h1>Shadman Shahriar Dhruba</h1></center>
+    <center><i>I am watching you</i></center>
+    <center>
+        <a href="index2.html">
+            <button>
+                <img src="profile.png" alt="">Profile
+            </button>
+        </a>
+        <a href="index3.html">
+            <button>
+                Details
+                <img src="details.png" alt="">
+            </button>
+        </a>
+    </center>
+
+    <div class="search-container">
+        <input id="searchInput" type="text" placeholder="Search...">
+        <button id="searchButton" type="button">Search</button>
+    </div>
+
+    <button class="menu-button" onclick="toggleMenu()">
+        <img src="3dot.png" alt="Menu" class="menu-icon">
+    </button>
+
+    <div class="popup-menu" id="popupMenu">
+        <ul>
+            <li><a href="index.html">Page 1</a></li>
+            <li><a href="index2.html">Page 2</a></li>
+            <li><a href="index3.html">Page 3</a></li>
+        </ul>
+    </div>
+
+    <div class="time-bar" id="time-bar"></div>
+
+    <script>
+        // Function to toggle the visibility of the loading overlay
+        function showLoading() {
+            document.getElementById('loadingOverlay').style.display = 'flex';
+        }
+
+        function hideLoading() {
+            document.getElementById('loadingOverlay').style.display = 'none';
+        }
+
+        // Call showLoading when the page starts loading
+        window.addEventListener('load', function() {
+            showLoading(); // Show loading overlay when the page starts loading
+
+            // Simulate content loading delay (remove this in production)
+            setTimeout(function() {
+                hideLoading(); // Hide loading overlay after a simulated delay
+            }, 2000); // Adjust the delay time as needed
+        });
+
+        // Update time bar function (from your existing code)
+        function updateTimeBar() {
+            const now = new Date();
+            const timeString = now.toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', second: 'numeric' });
+            document.getElementById('time-bar').textContent = timeString;
+        }
+
+        setInterval(updateTimeBar, 1000); // Update time bar every second
+        updateTimeBar(); // Initial update
+
+        // Toggle menu function (from your existing code)
+        function toggleMenu() {
+            const menu = document.getElementById('popupMenu');
+            menu.style.display = menu.style.display === 'none' ? 'block' : 'none';
+        }
+
+        // Search button click event listener (from your existing code)
+        document.getElementById('searchButton').addEventListener('click', function() {
+            const searchQuery = document.getElementById('searchInput').value.trim();
+            if (searchQuery !== '') {
+                console.log('Search Query:', searchQuery);
+                // You can perform further actions with the search query here
+            } else {
+                alert('Please enter a search query.');
+            }
+        
+    </script>
+</body>
+</html>
